@@ -1,0 +1,38 @@
+body {font-family: Arial}
+
+.head {
+    font-weight: normal;
+    font-size: 16pt;
+}
+
+.custom-container {
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    width: auto;
+}
+
+.block {padding: 10px 0}
+
+.block-title {
+    font-weight: bold;
+    font-size: 15pt;
+}
+
+.block-content {padding-top: 10px}
+
+.totals {
+    font-weight: bold;
+    font-size: 12pt;
+    margin: 15px 0;
+}
+
+.total {padding: 10px 0}
+
+.string {padding: 2px 0}
+
+.note {
+    font-weight: normal;
+    font-size: 11pt;
+    padding-top: 10px;
+}
