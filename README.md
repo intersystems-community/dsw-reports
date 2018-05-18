@@ -13,17 +13,18 @@ Addon for DeepSee Web which provides online reports and PDF emailing reports fro
    4. Set parameter **SCRIPTPATH**. It's path to rasterize.js file. Default: 
    `{DSWApp}/reports/rasterize/rasterize.js`.
    5. Set parameter **HOSTNAME**. It's hostname of your server.
-6. Configure SMTP server:
-**server** - your SMTP server hostname.
-**port** - port for outgoing messages on your SMTP server.
-**username** and **password** - your authentication data.
-**sender** - your email address.
+6. Configure SMTP server:  
+**server** - your SMTP server hostname.  
+**port** - port for outgoing messages on your SMTP server.  
+**username** and **password** - your authentication data.  
+**sender** - your email address.  
 `do ##class(DSW.Report.EmailSender).setConfig(server, port, username, password, sender)`
 7. Manage recipients: `do ##class(DSW.Report.EmailSender).addRecipient(email)` or 
 `do ##class(DSW.Report.EmailSender).deleteRecipient(email)`.
-8. Run report's task:
-**url** - link to your report.
-**reportname** - name of your report.
+8. Run report's task:  
+**url** - link to your report.  
+**reportname** - name of your report.  
+`do ##class(DSW.Reports.Task).Run(url, reportname)`
 
 
 ## Run example
