@@ -11,13 +11,11 @@ var page          = require('webpage').create(),
 address = system.args[1];
 output = system.args[2];
 
-page.viewportSize = { width: 700, height : 1000 };
+page.viewportSize = { width: 1000, height : 1000 };
 
 function doRender() {
-    setTimeout( function () {
-        page.render(output);
-        phantom.exit();
-    }, 3000)
+    page.render(output);
+    phantom.exit();
 }
 
 page.onResourceRequested = function (req) {

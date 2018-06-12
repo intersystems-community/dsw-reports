@@ -8,6 +8,12 @@ ClassMethod gln(dir = "config") [ CodeMode = expression, Private ]
 "^DSW.Report.SMTP."_dir
 }
 
+ClassMethod setSSLConfig(SSLConfig = "")
+{
+	set gln = ..gln("config")
+	set @gln@("SSLConfig") = SSLConfig
+}
+
 ClassMethod setSMTPServer(server, port)
 {
 	set gln = ..gln("config")
@@ -28,11 +34,12 @@ ClassMethod setAuthConfiguration(username, password = "")
 	set @gln@("password") = password
 }
 
-ClassMethod setConfig(server, port, username, password, sender)
+ClassMethod setConfig(server, port, username, password, sender, SSLConfig = "")
 {
 	do ..setSMTPServer(server, port)
 	do ..setAuthConfiguration(username, password)
 	do ..setEmailSender(sender)
+	do ..setSSLConfig(SSLConfig)
 }
 
 ClassMethod addRecipient(recipient)
@@ -72,7 +79,10 @@ ClassMethod sendEmail(mailSubject = "", mailText = "", attachPath = "") As %Stat
 	set Mailer = ##class(%Net.SMTP).%New()
     set Mailer.smtpserver = @glnSMTP@("server")
     set Mailer.port = @glnSMTP@("port")
-    Set Mailer.SSLConfiguration = "EmailDefault"
+    
+    if @glnSMTP@("SSLConfig") '= "" {
+    	set Mailer.SSLConfiguration = @glnSMTP@("SSLConfig")
+    }
     
     set Auth=##class(%Net.Authenticator).%New() ; use default authentication list
 	set Auth.UserName=@glnSMTP@("username")

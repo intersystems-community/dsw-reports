@@ -2,8 +2,8 @@
 Addon for DeepSee Web which provides online reports and PDF emailing reports from InterSystems DeepSee dashboards
 
 ## Installing
-1. Install [PhantomJS](http://phantomjs.org/download.html) 
-2. Install [MDX2JSON](https://github.com/intersystems-ru/Cache-MDX2JSON) and [DeepSeeWeb](https://github.com/intersystems-ru/DeepSeeWeb).
+1. Install last version [PhantomJS](http://phantomjs.org/download.html) 
+2. Install last versions [MDX2JSON](https://github.com/intersystems-ru/Cache-MDX2JSON) and [DeepSeeWeb](https://github.com/intersystems-ru/DeepSeeWeb).
 3. Import classes from repo (*src/cls/*)
 4. Move folger **"reports"** from repo (*src/web/*) to DeepSeeWeb application directory.
 5. Configure **DSW.Reports**:
@@ -18,7 +18,8 @@ Addon for DeepSee Web which provides online reports and PDF emailing reports fro
 **port** - port for outgoing messages on your SMTP server.  
 **username** and **password** - your authentication data.  
 **sender** - your email address.  
-`do ##class(DSW.Report.EmailSender).setConfig(server, port, username, password, sender)`
+**SSLConfig** - *Optional*. Set name of your SSL Configuration.
+`do ##class(DSW.Report.EmailSender).setConfig(server, port, username, password, sender, SSLConfig)`
 7. Manage recipients: `do ##class(DSW.Report.EmailSender).addRecipient(email)` or 
 `do ##class(DSW.Report.EmailSender).deleteRecipient(email)`.
 8. Run report's task:  
