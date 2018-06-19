@@ -1,4 +1,7 @@
 # dsw-reports
+
+[![Gitter](https://img.shields.io/badge/chat-on%20telegram-blue.svg)](https://t.me/joinchat/FoZ4M0izfqpEvzDf1PKH3Q)
+
 Addon for DeepSee Web which provides online reports and PDF emailing reports from InterSystems DeepSee dashboards
 
 ## Installing
