@@ -28,7 +28,7 @@ Addon for DeepSee Web which provides online reports and PDF emailing reports fro
 8. Run report's task:  
 **url** - link to your report.  
 **reportname** - name of your report.  
-`do ##class(DSW.Reports.Task).Run(url, reportname)`
+`do ##class(DSW.Report.Task).Run(url, reportname)`
 
 
 ## Run example
@@ -36,4 +36,13 @@ Addon for DeepSee Web which provides online reports and PDF emailing reports fro
 2. Run example's setup. `do ##class(RF.KHAB.Utils).Setup()`
 3. Check example: `<yourhost:port>/dsw/reports/example/index.html`
 4. Run report's task:
-`do ##class(DSW.Reports.Task).Run("<yourhost:port>/dsw/reports/example/index.html", "example")`
+`do ##class(DSW.Report.Task).Run("<yourhost:port>/dsw/reports/example/index.html", "example")`
+
+## FAQ
+### Running PhantomJS on Linux VPS without X Server and Desktop Enviroment.
+Witout X Server and Desktop Enviroment on Linux servers PhantomJS produces a next error:  
+```
+qt.qpa.screen: QXcbConnection: Could not connect to display
+Could not connect to any X display.
+```
+To fix the problem, please install [xvfb](https://en.wikipedia.org/wiki/Xvfb).
