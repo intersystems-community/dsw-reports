@@ -14,14 +14,10 @@ var params = window
         {}
     );
 
-if (!params['ns']) params['ns'] = undefined;
+var SERVER = location.protocol+"//"+location.host;
+params.server = SERVER;
 
-var SERVER = "http://"+location.host;
-
-var CONFIG = getConfiguration({
-    server: SERVER,
-    namespace: params['ns']
-});
+var CONFIG = getConfiguration(params);
 
 var NAMESPACE = CONFIG.NAMESPACE;
 
@@ -48,7 +44,7 @@ function ReportCtrl($scope, $location, $document, $http) {
 
             for (var string in $scope.model.blocks[block].totals[total].strings) {
                 var row = $scope.model.blocks[block].totals[total].strings[string].row;
-                if (row === undefined || row == null) row = 0;
+                if (row == undefined || row == null) row = 0;
 
                 if ($scope.model.blocks[block].totals[total].strings[string].value_append === undefined ||
                     $scope.model.blocks[block].totals[total].strings[string].value_append == null)
@@ -57,8 +53,8 @@ function ReportCtrl($scope, $location, $document, $http) {
                 var mult = 1;
                 if ($scope.model.blocks[block].totals[total].strings[string].value_append === "%")
                     mult = 100;
-
-                $scope.model.blocks[block].totals[total].strings[string].value = Math.round(response.data.Data[row] * mult);
+                if (response.data.Data[row] != undefined && response.data.Data[row] !== null)
+                    $scope.model.blocks[block].totals[total].strings[string].value = Math.round(response.data.Data[row] * mult);
             }
         });
     }
@@ -74,7 +70,23 @@ function ReportCtrl($scope, $location, $document, $http) {
         }
     }
 
-    init();
+    function singIn(login, password) {
+        $http({
+            method: 'GET',
+            url: SERVER + '/MDX2JSON/Test?Namespace=' + NAMESPACE,
+            timeout: 60000,
+            headers: {
+                'Authorization': 'Basic ' + btoa(encodeURIComponent(login) + ":" + encodeURIComponent(password))
+            }
+        }).then(function(){
+            init();
+        });
+    }
+
+    if (CONFIG.AUTHORIZATION == undefined)
+        init();
+    else
+        singIn(CONFIG.AUTHORIZATION.LOGIN, CONFIG.AUTHORIZATION.PASSWORD);
 
 }
 app.controller('report', ['$scope', '$location', '$document', '$http', ReportCtrl]);

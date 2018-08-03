@@ -2,7 +2,7 @@ body {font-family: Arial}
 
 .head {
     font-weight: normal;
-    font-size: 16pt;
+    font-size: 18pt;
 }
 
 .block {padding: 10px 0}
@@ -18,6 +18,7 @@ body {font-family: Arial}
     font-weight: bold;
     font-size: 12pt;
     margin: 15px 0;
+    text-align: left;
 }
 
 .total {padding: 10px 0}
