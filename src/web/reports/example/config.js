@@ -1,14 +1,16 @@
 /**
  * Общие настройки отчёта
- * @param params Параметы отправляемые в функцию обработки блоков.
+ * @param params параметы из строки URL. 
+ *               Дополнительный параметр server содержит в себе адрес сервера вида:
+ *               protocol://host:port
  * @returns {{REPORT_NAME: string, BLOCKS: *[], NAMESPACE: string}}
  */
 function getConfiguration(params) {
-    if (params.namespace == undefined || params.namespace == null) params.namespace = "DSWREP";
+    if (params["ns"] == undefined || params["ns"] == null) params["ns"] = "USER";
     return {
         REPORT_NAME: "Report Example", // Заголовок отчёта
         BLOCKS: getReportBlocks(params),
-        NAMESPACE: params.namespace // Значение области для отчёта
+        NAMESPACE: params["ns"] // Значение области для отчёта
     }
 }
 
@@ -41,8 +43,8 @@ function getReportBlocks(params) {
      * Все поля обязательны. Если какое то поле вам не нужно оставьте пустую строку.
      */
 
-    var server = params.server;
-    var namespace = params.namespace;
+    var server = params["server"];
+    var namespace = params["ns"];
     return [{
         title: "Khabarovsky krai",
         note: "Something note (only static)",
