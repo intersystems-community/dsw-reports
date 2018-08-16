@@ -21,7 +21,7 @@ Addon for DeepSee Web which provides online reports and PDF emailing reports fro
 **port** - port for outgoing messages on your SMTP server.  
 **username** and **password** - your authentication data.  
 **sender** - your email address.  
-**SSLConfig** - *Optional*. Set name of your SSL Configuration.
+**SSLConfig** - *Optional*. Set name of your SSL Configuration.   
 `do ##class(DSW.Report.EmailSender).setConfig(server, port, username, password, sender, SSLConfig)`
 7. Manage recipients: `do ##class(DSW.Report.EmailSender).addRecipient(email)` or 
 `do ##class(DSW.Report.EmailSender).deleteRecipient(email)`.
