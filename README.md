@@ -8,7 +8,7 @@ Addon for DeepSee Web which provides online reports and PDF emailing reports fro
 1. Install last version [PhantomJS](http://phantomjs.org/download.html) 
 2. Install last versions [MDX2JSON](https://github.com/intersystems-ru/Cache-MDX2JSON) and [DeepSeeWeb](https://github.com/intersystems-ru/DeepSeeWeb).
 3. Import classes from repo (*src/cls/*)
-4. Move folger **"reports"** from repo (*src/web/*) to DeepSeeWeb application directory.
+4. Move folder **"reports"** from repo (*src/web/*) to DeepSeeWeb application root directory.
 5. Configure **DSW.Reports**:
    1. Open class DSW.Reports.Task and configure parameters.
    2. Set parameter **HEADLESS**. It's path to PhantomJS binary, or "phantomjs" command if binaries included to PATH.
